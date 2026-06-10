@@ -10,11 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Jost', sans-serif;
@@ -27,20 +23,20 @@
             overflow-x: hidden;
         }
 
-        /* --- Сосновый лес --- */
+        /* --- Разреженный паттерн сосен --- */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             z-index: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg opacity='0.18'%3E%3Cpath d='M80 580 l-4-60 l-22 0 l26-50 l-18 0 l22-45 l-14 0 l18-35 l-10 0 l14-30 l14 30 l-10 0 l18 35 l-14 0 l22 45 l-18 0 l26 50 l-22 0 l-4 60z' fill='%23264d26'/%3E%3Cpath d='M200 580 l-5-75 l-28 0 l32-60 l-22 0 l28-55 l-18 0 l22-42 l-12 0 l18-35 l18 35 l-12 0 l22 42 l-18 0 l28 55 l-22 0 l32 60 l-28 0 l-5 75z' fill='%23264d26'/%3E%3Cpath d='M340 580 l-4-55 l-20 0 l24-48 l-16 0 l20-40 l-12 0 l16-32 l-8 0 l12-25 l12 25 l-8 0 l16 32 l-12 0 l20 40 l-16 0 l24 48 l-20 0 l-4 55z' fill='%23264d26'/%3E%3Cpath d='M500 580 l-5-70 l-25 0 l30-58 l-20 0 l25-50 l-16 0 l20-38 l-10 0 l15-30 l15 30 l-10 0 l20 38 l-16 0 l25 50 l-20 0 l30 58 l-25 0 l-5 70z' fill='%23264d26'/%3E%3Cpath d='M140 580 l-3-45 l-16 0 l20-38 l-12 0 l16-32 l-10 0 l14-28 l14 28 l-10 0 l16 32 l-12 0 l20 38 l-16 0 l-3 45z' fill='%231e3d1e'/%3E%3Cpath d='M420 580 l-3-50 l-18 0 l22-42 l-14 0 l18-36 l-10 0 l14-28 l14 28 l-10 0 l18 36 l-14 0 l22 42 l-18 0 l-3 50z' fill='%231e3d1e'/%3E%3Cpath d='M560 580 l-3-40 l-14 0 l18-35 l-10 0 l14-28 l-8 0 l10-22 l10 22 l-8 0 l14 28 l-10 0 l18 35 l-14 0 l-3 40z' fill='%231e3d1e'/%3E%3Cpath d='M30 580 l-2-35 l-12 0 l15-30 l-8 0 l12-24 l-6 0 l9-18 l9 18 l-6 0 l12 24 l-8 0 l15 30 l-12 0 l-2 35z' fill='%231e3d1e'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: 600px 600px;
-            background-position: center bottom;
+            opacity: 0.2;
             pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cg%3E%3Cline x1='60' y1='80' x2='60' y2='120' stroke='%233a5a3a' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M60,80c0,2.2-1.8,4-4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,84c0,3.3-2.7,6-6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,88c0,4.4-3.6,8-8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,80c0,2.2,1.8,4,4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,84c0,3.3,2.7,6,6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,88c0,4.4,3.6,8,8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='210' y1='200' x2='210' y2='250' stroke='%233a5a3a' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M210,200c0,2.2-1.8,4-4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,204c0,3.3-2.7,6-6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,208c0,4.4-3.6,8-8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,200c0,2.2,1.8,4,4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,204c0,3.3,2.7,6,6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,208c0,4.4,3.6,8,8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='140' y1='30' x2='140' y2='68' stroke='%233a5a3a' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M140,30c0,1.8-1.4,3.2-3.2,3.2' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,33c0,2.6-2.1,4.8-4.8,4.8' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,36c0,3.5-2.8,6.4-6.4,6.4' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,30c0,1.8,1.4,3.2,3.2,3.2' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,33c0,2.6,2.1,4.8,4.8,4.8' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,36c0,3.5,2.8,6.4,6.4,6.4' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 300px 300px;
         }
 
-        /* --- Река Волга --- */
-        .river {
+        /* --- Река Волга с анимацией течения --- */
+        .river-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -51,28 +47,46 @@
             overflow: hidden;
         }
 
-        .river svg {
+        .river-flow {
             position: absolute;
-            top: 0; left: 0;
+            left: 0;
+            width: 100%;
+            /* Два экрана высотой для бесшовного цикла */
+            height: 200%;
+            animation: flowDown 12s linear infinite;
+        }
+
+        @keyframes flowDown {
+            from { transform: translateY(-50%); }
+            to { transform: translateY(0%); }
+        }
+
+        .river-flow svg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
         }
 
-        @keyframes shimmer1 {
-            0%, 100% { opacity: 0.06; }
-            50% { opacity: 0.14; }
+        /* Блики на воде — дополнительный слой */
+        .river-shimmer {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            animation: flowDown 18s linear infinite;
+            opacity: 0.6;
         }
-        @keyframes shimmer2 {
-            0%, 100% { opacity: 0.08; }
-            50% { opacity: 0.18; }
+
+        /* Золотые блики */
+        .river-sparkle {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            animation: flowDown 25s linear infinite;
         }
-        @keyframes shimmer3 {
-            0%, 100% { opacity: 0.04; }
-            50% { opacity: 0.1; }
-        }
-        .river-layer-1 { animation: shimmer1 6s ease-in-out infinite; }
-        .river-layer-2 { animation: shimmer2 8s ease-in-out infinite 2s; }
-        .river-layer-3 { animation: shimmer3 7s ease-in-out infinite 4s; }
 
         /* --- Обёртка карточек --- */
         .cards-wrapper {
@@ -81,13 +95,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2.5rem;
-            padding: 3rem 1rem;
+            gap: 18rem;
+            padding: 4rem 1rem;
             max-width: 650px;
             margin: 0 auto;
         }
 
-        /* --- Общий стиль карточки --- */
+        /* --- Карточка --- */
         .card {
             width: 100%;
             background: linear-gradient(165deg, #1e3320 0%, #162818 40%, #1a2e1c 100%);
@@ -96,33 +110,31 @@
             text-align: center;
             border: 2px solid #c9a84c;
             position: relative;
-            /* Глубокие тени для объёма */
             box-shadow:
-                0 2px 4px rgba(0, 0, 0, 0.3),
-                0 8px 16px rgba(0, 0, 0, 0.3),
-                0 16px 40px rgba(0, 0, 0, 0.4),
-                0 0 0 4px rgba(201, 168, 76, 0.12),
-                0 0 60px -10px rgba(201, 168, 76, 0.08);
-            animation: fadeIn 1.2s ease-out both;
+                0 2px 4px rgba(0,0,0,0.3),
+                0 8px 20px rgba(0,0,0,0.35),
+                0 20px 50px rgba(0,0,0,0.45),
+                0 0 0 4px rgba(201,168,76,0.12),
+                0 0 80px -15px rgba(201,168,76,0.1);
+            animation: cardIn 1.2s ease-out both;
         }
 
-        /* Золотая внутренняя рамка */
         .card::before {
             content: '';
             position: absolute;
             top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px solid rgba(201, 168, 76, 0.2);
+            border: 1px solid rgba(201,168,76,0.2);
             border-radius: 18px;
             pointer-events: none;
         }
 
         .card:nth-child(1) { animation-delay: 0s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.4s; }
-        .card:nth-child(4) { animation-delay: 0.6s; }
+        .card:nth-child(2) { animation-delay: 0.15s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.45s; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -134,20 +146,18 @@
             margin: 0 auto 1.5rem;
             padding: 6px;
             border: 3px solid #c9a84c;
-            box-shadow: 0 0 25px rgba(201, 168, 76, 0.3), 0 8px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 25px rgba(201,168,76,0.3), 0 8px 25px rgba(0,0,0,0.4);
             overflow: hidden;
             background: #1a2a1a;
         }
 
         .photo-frame img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             border-radius: 50%;
             display: block;
         }
 
-        /* --- Разделитель --- */
         .divider {
             display: flex;
             align-items: center;
@@ -162,15 +172,14 @@
             background: linear-gradient(to right, transparent, #c9a84c, transparent);
         }
 
-        /* --- Заголовки --- */
         h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             font-size: clamp(2rem, 6vw, 3.2rem);
-            color: #ffffff;
+            color: #fff;
             letter-spacing: 1px;
             margin-bottom: 0.2rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
 
         .date-big {
@@ -182,23 +191,18 @@
             margin-top: 0.3rem;
         }
 
-        /* --- Текст --- */
         .card p {
             font-size: 1.05rem;
             font-weight: 300;
             margin-bottom: 0.8rem;
         }
-
-        .card p:last-child {
-            margin-bottom: 0;
-        }
+        .card p:last-child { margin-bottom: 0; }
 
         .highlight {
             font-weight: 400;
             color: #e4cf8b;
         }
 
-        /* --- Таймер --- */
         .timer-title {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
@@ -215,19 +219,19 @@
         }
 
         .timer-item {
-            background: rgba(20, 28, 20, 0.7);
+            background: rgba(20,28,20,0.7);
             border-radius: 12px;
             padding: 0.7rem 0.5rem;
             min-width: 75px;
-            border: 1px solid rgba(201, 168, 76, 0.5);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201,168,76,0.5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .timer-number {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #fff;
             line-height: 1;
         }
 
@@ -239,12 +243,11 @@
             margin-top: 0.2rem;
         }
 
-        /* --- Место --- */
         .restaurant-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.9rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #fff;
         }
 
         .address {
@@ -253,7 +256,6 @@
             margin: 0.4rem 0;
         }
 
-        /* --- Подвал --- */
         .footer-note {
             margin-top: 0.5rem;
             font-size: 0.9rem;
@@ -261,97 +263,132 @@
             color: #a09880;
         }
 
-        /* --- Мобильная адаптация --- */
         @media (max-width: 500px) {
             .cards-wrapper {
-                gap: 2rem;
-                padding: 2rem 0.8rem;
+                gap: 14rem;
+                padding: 3rem 0.8rem;
             }
-            .card {
-                padding: 1.6rem 1.2rem;
-            }
-            .photo-frame {
-                width: 140px;
-                height: 140px;
-            }
-            .timer {
-                gap: 0.4rem;
-            }
-            .timer-item {
-                min-width: 65px;
-                padding: 0.5rem 0.3rem;
-            }
-            .timer-number {
-                font-size: 1.7rem;
-            }
+            .card { padding: 1.6rem 1.2rem; }
+            .photo-frame { width: 140px; height: 140px; }
+            .timer { gap: 0.4rem; }
+            .timer-item { min-width: 65px; padding: 0.5rem 0.3rem; }
+            .timer-number { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Река Волга -->
-    <div class="river">
-        <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="river-layer-1" d="
-                M -50,0 C 150,120 80,200 180,340
-                S 320,500 260,680
-                S 150,850 240,1020
-                S 380,1180 300,1360
-                S 200,1520 280,1700
-                S 380,1850 320,2050
-                L 430,2050
-                C 480,1850 480,1700 380,1520
-                S 330,1360 420,1180
-                S 340,1020 340,850
-                S 420,680 370,500
-                S 260,340 270,200
-                S 230,80 50,0 Z
-            " fill="url(#riverG)" />
-            <path class="river-layer-2" d="
-                M 0,0 C 170,140 110,230 210,370
-                S 300,530 250,710
-                S 170,870 250,1040
-                S 370,1200 310,1380
-                S 220,1540 290,1720
-                S 390,1870 340,2050
-                L 380,2050
-                C 420,1870 430,1720 350,1540
-                S 310,1380 390,1200
-                S 330,1040 320,870
-                S 400,710 360,530
-                S 250,370 250,230
-                S 200,100 20,0 Z
-            " fill="url(#shimG)" />
-            <path class="river-layer-3" d="
-                M 40,0 C 190,150 140,250 230,400
-                S 290,580 260,740
-                S 200,900 270,1060
-                S 360,1220 310,1400
-                S 240,1560 300,1740 L 310,1740
-                C 260,1560 330,1400 370,1220
-                S 290,1060 290,900
-                S 360,740 320,580
-                S 240,400 240,250
-                S 200,110 50,0 Z
-            " fill="url(#moonG)" />
-            <defs>
-                <linearGradient id="riverG" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#2a5a3f" stop-opacity="0.35" />
-                    <stop offset="50%" stop-color="#1a4a35" stop-opacity="0.45" />
-                    <stop offset="100%" stop-color="#1e5040" stop-opacity="0.35" />
-                </linearGradient>
-                <linearGradient id="shimG" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#5a9a6a" stop-opacity="0.1" />
-                    <stop offset="50%" stop-color="#7aba8a" stop-opacity="0.15" />
-                    <stop offset="100%" stop-color="#5a9a6a" stop-opacity="0.1" />
-                </linearGradient>
-                <linearGradient id="moonG" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.05" />
-                    <stop offset="50%" stop-color="#c9a84c" stop-opacity="0.09" />
-                    <stop offset="100%" stop-color="#c9a84c" stop-opacity="0.04" />
-                </linearGradient>
-            </defs>
-        </svg>
+    <!-- Река Волга — три слоя с анимацией течения -->
+    <div class="river-container">
+        <!-- Основное русло -->
+        <div class="river-flow">
+            <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="
+                    M-20,0 C120,100 80,180 160,300
+                    S300,460 240,620 S140,780 220,940
+                    S360,1080 280,1240 S180,1400 260,1560
+                    S380,1720 300,1900 L300,2000
+                    L420,2000 L420,1900
+                    C480,1720 460,1560 380,1400
+                    S320,1240 400,1080 S320,940 320,780
+                    S400,620 360,460 S240,300 240,180
+                    S200,60 30,0 Z
+                " fill="url(#rG1)" />
+                <!-- Дублируем для бесшовного цикла -->
+                <path d="
+                    M-20,1000 C120,1100 80,1180 160,1300
+                    S300,1460 240,1620 S140,1780 220,1940
+                    S360,2080 280,2240 S180,2400 260,2560
+                    S380,2720 300,2900 L300,3000
+                    L420,3000 L420,2900
+                    C480,2720 460,2560 380,2400
+                    S320,2240 400,2080 S320,1940 320,1780
+                    S400,1620 360,1460 S240,1300 240,1180
+                    S200,1060 30,1000 Z
+                " fill="url(#rG1)" />
+                <defs>
+                    <linearGradient id="rG1" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#1a4a35" stop-opacity="0.15"/>
+                        <stop offset="40%" stop-color="#2a6a4a" stop-opacity="0.4"/>
+                        <stop offset="60%" stop-color="#2a6a4a" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#1a4a35" stop-opacity="0.15"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Блики волн -->
+        <div class="river-shimmer">
+            <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="
+                    M60,0 C180,110 120,200 200,340
+                    S280,500 230,660 S170,810 240,960
+                    S340,1110 280,1270 S200,1430 270,1580
+                    S370,1740 310,1920 L310,2000
+                    L360,2000 L360,1920
+                    C400,1740 390,1580 340,1430
+                    S300,1270 360,1110 S300,960 300,810
+                    S370,660 340,500 S220,340 220,200
+                    S190,80 70,0 Z
+                " fill="url(#rG2)" />
+                <path d="
+                    M60,1000 C180,1110 120,1200 200,1340
+                    S280,1500 230,1660 S170,1810 240,1960
+                    S340,2110 280,2270 S200,2430 270,2580
+                    S370,2740 310,2920 L310,3000
+                    L360,3000 L360,2920
+                    C400,2740 390,2580 340,2430
+                    S300,2270 360,2110 S300,1960 300,1810
+                    S370,1660 340,1500 S220,1340 220,1200
+                    S190,1080 70,1000 Z
+                " fill="url(#rG2)" />
+                <defs>
+                    <linearGradient id="rG2" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#4a9a6a" stop-opacity="0"/>
+                        <stop offset="30%" stop-color="#6abf8a" stop-opacity="0.25"/>
+                        <stop offset="50%" stop-color="#8ad4a0" stop-opacity="0.3"/>
+                        <stop offset="70%" stop-color="#6abf8a" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#4a9a6a" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Золотые блики-дорожки -->
+        <div class="river-sparkle">
+            <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="
+                    M100,0 C200,120 160,220 230,370
+                    S260,540 230,690 S190,840 250,990
+                    S330,1130 280,1290 S210,1450 270,1600
+                    S350,1760 300,1940 L300,2000
+                    L320,2000 L320,1940
+                    C360,1760 350,1600 310,1450
+                    S290,1290 340,1130 S290,990 280,840
+                    S340,690 310,540 S240,370 240,220
+                    S210,90 110,0 Z
+                " fill="url(#rG3)" />
+                <path d="
+                    M100,1000 C200,1120 160,1220 230,1370
+                    S260,1540 230,1690 S190,1840 250,1990
+                    S330,2130 280,2290 S210,2450 270,2600
+                    S350,2760 300,2940 L300,3000
+                    L320,3000 L320,2940
+                    C360,2760 350,2600 310,2450
+                    S290,2290 340,2130 S290,1990 280,1840
+                    S340,1690 310,1540 S240,1370 240,1220
+                    S210,1090 110,1000 Z
+                " fill="url(#rG3)" />
+                <defs>
+                    <linearGradient id="rG3" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+                        <stop offset="40%" stop-color="#c9a84c" stop-opacity="0.06"/>
+                        <stop offset="60%" stop-color="#c9a84c" stop-opacity="0.06"/>
+                        <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
     </div>
 
     <div class="cards-wrapper">
@@ -369,7 +406,7 @@
             </div>
         </div>
 
-        <!-- Карточка 2: Текст приглашения + дата -->
+        <!-- Карточка 2: Текст + дата -->
         <div class="card">
             <p>
                 В нашей жизни предстоят счастливые перемены. Мы хотим, чтобы в этот день рядом с нами были самые дорогие для нас люди.
