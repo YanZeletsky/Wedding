@@ -1,40 +1,423 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Приглашение на свадьбу | 26.06.2026</title>
-  
-  <!-- Подключаем элегантные шрифты -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Приглашение на свадьбу | 26.06.2026</title>
 
-    body {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      color: #f0ede8;
-      background-color: #1a1d18; /* Глубокий лесной цвет, пока фон не загрузился */
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
-    /* Контейнер с фоновым изображением */
-    .invitation {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            background-color: #1a2a1a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f0ede8;
+            line-height: 1.7;
+            padding: 1rem;
+            /* Паттерн соснового леса */
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' opacity='0.12'%3E%3Cpath d='M200 60 l-30 50 h20 l-25 40 h70 l-25-40 h20z' fill='%23111'/%3E%3Cpath d='M100 160 l-25 40 h15 l-20 35 h55 l-20-35 h15z' fill='%23111'/%3E%3Cpath d='M310 140 l-30 50 h20 l-25 40 h70 l-25-40 h20z' fill='%23111'/%3E%3Cpath d='M50 280 l-25 40 h15 l-20 35 h55 l-20-35 h15z' fill='%23111'/%3E%3Cpath d='M340 270 l-30 50 h20 l-25 40 h70 l-25-40 h20z' fill='%23111'/%3E%3Cpath d='M250 310 l-25 40 h15 l-20 35 h55 l-20-35 h15z' fill='%23111'/%3E%3Cpath d='M160 320 l-20 35 h12 l-15 25 h45 l-15-25 h12z' fill='%23111'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 300px 300px;
+        }
+
+        /* Основная карточка приглашения */
+        .invitation {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            background: linear-gradient(165deg, #1e3320 0%, #162818 40%, #1a2e1c 100%);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            /* Золотая обводка */
+            border: 2px solid #c9a84c;
+            box-shadow:
+                0 0 0 4px rgba(201, 168, 76, 0.15),
+                0 0 0 8px rgba(201, 168, 76, 0.07),
+                0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Декоративный золотой уголок */
+        .invitation::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Фото --- */
+        .photo-frame {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            padding: 6px;
+            /* Золотая обводка фото */
+            border: 3px solid #c9a84c;
+            box-shadow: 0 0 25px rgba(201, 168, 76, 0.3), 0 8px 25px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            background: #1a2a1a;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        /* --- Декоративная линия --- */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            color: #c9a84c;
+            font-size: 1rem;
+        }
+        .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #c9a84c, transparent);
+        }
+
+        /* --- Заголовки --- */
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .date-big {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(1.6rem, 5vw, 2.6rem);
+            color: #d4b860;
+            display: block;
+            margin-top: -0.3rem;
+        }
+
+        /* --- Текстовый блок --- */
+        .invite-text {
+            background: rgba(20, 30, 20, 0.5);
+            border-radius: 14px;
+            padding: 1.5rem 1.5rem;
+            margin: 1.5rem 0;
+            /* Золотая рамка */
+            border: 1px solid rgba(201, 168, 76, 0.45);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .invite-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 0.8rem;
+        }
+
+        .invite-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .invite-text .highlight {
+            font-weight: 400;
+            color: #e4cf8b;
+        }
+
+        /* --- Таймер --- */
+        .timer-section {
+            margin: 1.8rem 0;
+        }
+
+        .timer-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #c9a84c;
+            margin-bottom: 0.8rem;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .timer-item {
+            background: rgba(20, 28, 20, 0.7);
+            border-radius: 12px;
+            padding: 0.7rem 0.5rem;
+            min-width: 75px;
+            /* Золотая рамка */
+            border: 1px solid rgba(201, 168, 76, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .timer-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c9a84c;
+            margin-top: 0.2rem;
+        }
+
+        /* --- Место проведения --- */
+        .location {
+            margin-top: 0.5rem;
+        }
+
+        .restaurant-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .address {
+            font-size: 0.95rem;
+            color: #d4b860;
+            margin: 0.4rem 0;
+        }
+
+        /* --- Кнопка --- */
+        .calendar-btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #c9a84c;
+            color: #f0ede8;
+            padding: 0.8rem 2rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            text-decoration: none;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .calendar-btn:hover {
+            background: #c9a84c;
+            color: #1a2a1a;
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.55);
+        }
+
+        /* --- Подвал --- */
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #a09880;
+        }
+
+        /* --- Адаптация --- */
+        @media (max-width: 500px) {
+            .invitation {
+                padding: 1.8rem 1.2rem;
+            }
+            .photo-frame {
+                width: 140px;
+                height: 140px;
+            }
+            .timer {
+                gap: 0.4rem;
+            }
+            .timer-item {
+                min-width: 65px;
+                padding: 0.5rem 0.3rem;
+            }
+            .timer-number {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation">
+
+        <!-- Фото -->
+        <div class="photo-frame">
+            <img src="wedding.jpg" alt="Наше фото">
+        </div>
+
+        <!-- Заголовок -->
+        <h1>Дорогие родные и близкие!</h1>
+        <div class="divider">
+            <span class="line"></span>
+            <span>✦</span>
+            <span class="line"></span>
+        </div>
+
+        <!-- Текст -->
+        <div class="invite-text">
+            <p>
+                В нашей жизни предстоят счастливые перемены. Мы хотим, чтобы в этот день рядом с нами были самые дорогие для нас люди.
+            </p>
+            <p>
+                Будем рады разделить с вами этот чудесный праздник в честь нашей любви и союза, который состоится
+            </p>
+            <span class="date-big">26 июня 2026</span>
+        </div>
+
+        <!-- Таймер -->
+        <div class="timer-section">
+            <div class="timer-title">До торжества осталось</div>
+            <div class="timer" id="timer">
+                <div class="timer-item">
+                    <div class="timer-number" id="days">00</div>
+                    <div class="timer-label">Дней</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="hours">00</div>
+                    <div class="timer-label">Часов</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="minutes">00</div>
+                    <div class="timer-label">Минут</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="seconds">00</div>
+                    <div class="timer-label">Секунд</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Место -->
+        <div class="invite-text location">
+            <p class="highlight">Приглашаем вас на семейный ужин</p>
+            <div class="restaurant-name">Sattva</div>
+            <p class="address">г. Москва, Ленинградский проспект, 52</p>
+            <p>Ждем вас к <strong>16:00</strong><br>в хорошем настроении</p>
+        </div>
+
+        <!-- Кнопка -->
+        <a href="#" class="calendar-btn" id="calendarButton">✦ Добавить в календарь ✦</a>
+
+        <div class="footer-note">
+            Поддержите нас вашими улыбками и красивыми нарядами
+        </div>
+
+    </div>
+
+    <script>
+        const weddingDate = new Date('2026-06-26T16:00:00+03:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('timer').innerHTML =
+                    '<div class="timer-title" style="font-size:1.8rem; margin-top:0.5rem;">Мы уже женаты! 🎉</div>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Кнопка "Добавить в календарь"
+        document.getElementById('calendarButton').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const startDate = '20260626T130000Z';
+            const endDate = '20260626T180000Z';
+
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Wedding Invitation//RU',
+                'BEGIN:VEVENT',
+                'DTSTART:' + startDate,
+                'DTEND:' + endDate,
+                'SUMMARY:Свадьба и семейный ужин',
+                'DESCRIPTION:Дорогие родные и близкие! Ждем вас на нашем празднике в ресторане Sattva.',
+                'LOCATION:Ресторан Sattva, г. Москва, Ленинградский проспект, 52',
+                'BEGIN:VALARM',
+                'TRIGGER:-PT24H',
+                'ACTION:DISPLAY',
+                'DESCRIPTION:Завтра свадьба! Не забудьте про наряды и улыбки :)',
+                'END:VALARM',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'priglashenie_na_svadbu.ics';
+            link.click();
+
+            const btn = document.getElementById('calendarButton');
+            const originalText = btn.innerText;
+            btn.innerText = '✓ Добавлено!';
+            btn.style.background = '#c9a84c';
+            btn.style.color = '#1a2a1a';
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = 'rgba(0,0,0,0.2)';
+                btn.style.color = '#f0ede8';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
