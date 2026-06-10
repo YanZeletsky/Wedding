@@ -23,99 +23,88 @@
             overflow-x: hidden;
         }
 
-        /* --- Разреженный паттерн сосен --- */
-        body::before {
-            content: '';
+        /* --- Пейзаж --- */
+        .landscape {
             position: fixed;
-            inset: 0;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 0;
-            opacity: 0.2;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cg%3E%3Cline x1='60' y1='80' x2='60' y2='120' stroke='%233a5a3a' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M60,80c0,2.2-1.8,4-4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,84c0,3.3-2.7,6-6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,88c0,4.4-3.6,8-8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,80c0,2.2,1.8,4,4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,84c0,3.3,2.7,6,6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,88c0,4.4,3.6,8,8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='210' y1='200' x2='210' y2='250' stroke='%233a5a3a' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M210,200c0,2.2-1.8,4-4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,204c0,3.3-2.7,6-6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,208c0,4.4-3.6,8-8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,200c0,2.2,1.8,4,4,4' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,204c0,3.3,2.7,6,6,6' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M210,208c0,4.4,3.6,8,8,8' stroke='%23426D5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='140' y1='30' x2='140' y2='68' stroke='%233a5a3a' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M140,30c0,1.8-1.4,3.2-3.2,3.2' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,33c0,2.6-2.1,4.8-4.8,4.8' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,36c0,3.5-2.8,6.4-6.4,6.4' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,30c0,1.8,1.4,3.2,3.2,3.2' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,33c0,2.6,2.1,4.8,4.8,4.8' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140,36c0,3.5,2.8,6.4,6.4,6.4' stroke='%23365e4a' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
-            background-size: 300px 300px;
+            overflow: hidden;
+            /* Параллакс: JS двигает через transform */
+            will-change: transform;
         }
 
-        /* --- Река Волга с анимацией течения --- */
-        .river-container {
+        .landscape svg {
+            position: absolute;
+            top: -20%; left: 0;
+            width: 100%; height: 140%;
+        }
+
+        /* --- Светлячки --- */
+        .fireflies {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
             pointer-events: none;
             overflow: hidden;
         }
 
-        .river-flow {
+        .firefly {
             position: absolute;
-            left: 0;
-            width: 100%;
-            /* Два экрана высотой для бесшовного цикла */
-            height: 200%;
-            animation: flowDown 12s linear infinite;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: #e8d070;
+            box-shadow: 0 0 6px 2px rgba(232,208,112,0.6), 0 0 14px 4px rgba(232,208,112,0.25);
+            animation: fireflyFloat linear infinite, fireflyGlow ease-in-out infinite;
         }
 
-        @keyframes flowDown {
-            from { transform: translateY(-50%); }
-            to { transform: translateY(0%); }
+        @keyframes fireflyFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(15px, -25px) scale(0.9); }
+            50% { transform: translate(-10px, -50px) scale(1.1); }
+            75% { transform: translate(20px, -30px) scale(0.8); }
+            100% { transform: translate(0, 0) scale(1); }
         }
 
-        .river-flow svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Блики на воде — дополнительный слой */
-        .river-shimmer {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 200%;
-            animation: flowDown 18s linear infinite;
-            opacity: 0.6;
-        }
-
-        /* Золотые блики */
-        .river-sparkle {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 200%;
-            animation: flowDown 25s linear infinite;
+        @keyframes fireflyGlow {
+            0%, 100% { opacity: 0; }
+            15% { opacity: 0.9; }
+            50% { opacity: 0.3; }
+            85% { opacity: 0.8; }
         }
 
         /* --- Обёртка карточек --- */
         .cards-wrapper {
             position: relative;
-            z-index: 1;
+            z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 18rem;
-            padding: 4rem 1rem;
+            gap: 9rem;
+            padding: 3rem 1rem;
             max-width: 650px;
             margin: 0 auto;
         }
 
-        /* --- Карточка --- */
+        /* --- Карточка glassmorphism (светлее, прозрачнее) --- */
         .card {
             width: 100%;
-            background: linear-gradient(165deg, #1e3320 0%, #162818 40%, #1a2e1c 100%);
+            background: rgba(38, 58, 40, 0.48);
+            backdrop-filter: blur(18px) saturate(1.4);
+            -webkit-backdrop-filter: blur(18px) saturate(1.4);
             border-radius: 24px;
             padding: 2rem 1.8rem;
             text-align: center;
-            border: 2px solid #c9a84c;
+            border: none;
             position: relative;
             box-shadow:
-                0 2px 4px rgba(0,0,0,0.3),
-                0 8px 20px rgba(0,0,0,0.35),
-                0 20px 50px rgba(0,0,0,0.45),
-                0 0 0 4px rgba(201,168,76,0.12),
-                0 0 80px -15px rgba(201,168,76,0.1);
+                0 2px 4px rgba(0,0,0,0.15),
+                0 8px 20px rgba(0,0,0,0.2),
+                0 20px 50px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 0 60px -15px rgba(201,168,76,0.08);
             animation: cardIn 1.2s ease-out both;
         }
 
@@ -123,7 +112,7 @@
             content: '';
             position: absolute;
             top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px solid rgba(201,168,76,0.2);
+            border: none;
             border-radius: 18px;
             pointer-events: none;
         }
@@ -138,37 +127,29 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Фото --- */
         .photo-frame {
-            width: 180px;
-            height: 180px;
+            width: 180px; height: 180px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             padding: 6px;
             border: 3px solid #c9a84c;
             box-shadow: 0 0 25px rgba(201,168,76,0.3), 0 8px 25px rgba(0,0,0,0.4);
             overflow: hidden;
-            background: #1a2a1a;
+            background: rgba(30,48,30,0.5);
         }
 
         .photo-frame img {
             width: 100%; height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: block;
+            object-fit: cover; border-radius: 50%; display: block;
         }
 
         .divider {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1rem 0 0.2rem;
-            color: #c9a84c;
-            font-size: 1rem;
+            display: flex; align-items: center;
+            gap: 1rem; margin: 1rem 0 0.2rem;
+            color: #c9a84c; font-size: 1rem;
         }
         .line {
-            flex: 1;
-            height: 1px;
+            flex: 1; height: 1px;
             background: linear-gradient(to right, transparent, #c9a84c, transparent);
         }
 
@@ -176,8 +157,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             font-size: clamp(2rem, 6vw, 3.2rem);
-            color: #fff;
-            letter-spacing: 1px;
+            color: #fff; letter-spacing: 1px;
             margin-bottom: 0.2rem;
             text-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
@@ -186,42 +166,26 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
             font-size: clamp(1.6rem, 5vw, 2.6rem);
-            color: #d4b860;
-            display: block;
-            margin-top: 0.3rem;
+            color: #d4b860; display: block; margin-top: 0.3rem;
         }
 
-        .card p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            margin-bottom: 0.8rem;
-        }
+        .card p { font-size: 1.05rem; font-weight: 300; margin-bottom: 0.8rem; }
         .card p:last-child { margin-bottom: 0; }
-
-        .highlight {
-            font-weight: 400;
-            color: #e4cf8b;
-        }
+        .highlight { font-weight: 400; color: #e4cf8b; }
 
         .timer-title {
             font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.3rem;
-            color: #c9a84c;
-            margin-bottom: 0.8rem;
+            font-style: italic; font-size: 1.3rem;
+            color: #c9a84c; margin-bottom: 0.8rem;
         }
 
-        .timer {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
+        .timer { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
 
         .timer-item {
-            background: rgba(20,28,20,0.7);
-            border-radius: 12px;
-            padding: 0.7rem 0.5rem;
+            background: rgba(25,35,25,0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px; padding: 0.7rem 0.5rem;
             min-width: 75px;
             border: 1px solid rgba(201,168,76,0.5);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -229,45 +193,29 @@
 
         .timer-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #fff;
-            line-height: 1;
+            font-size: 2.2rem; font-weight: 600;
+            color: #fff; line-height: 1;
         }
 
         .timer-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #c9a84c;
-            margin-top: 0.2rem;
+            font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 2px; color: #c9a84c; margin-top: 0.2rem;
         }
 
         .restaurant-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.9rem;
-            font-weight: 600;
-            color: #fff;
+            font-size: 1.9rem; font-weight: 600; color: #fff;
         }
 
-        .address {
-            font-size: 0.95rem;
-            color: #d4b860;
-            margin: 0.4rem 0;
-        }
+        .address { font-size: 0.95rem; color: #d4b860; margin: 0.4rem 0; }
 
         .footer-note {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            font-style: italic;
-            color: #a09880;
+            margin-top: 0.5rem; font-size: 0.9rem;
+            font-style: italic; color: #a09880;
         }
 
         @media (max-width: 500px) {
-            .cards-wrapper {
-                gap: 14rem;
-                padding: 3rem 0.8rem;
-            }
+            .cards-wrapper { gap: 7rem; padding: 2rem 0.8rem; }
             .card { padding: 1.6rem 1.2rem; }
             .photo-frame { width: 140px; height: 140px; }
             .timer { gap: 0.4rem; }
@@ -278,146 +226,282 @@
 </head>
 <body>
 
-    <!-- Река Волга — три слоя с анимацией течения -->
-    <div class="river-container">
-        <!-- Основное русло -->
-        <div class="river-flow">
-            <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="
-                    M-20,0 C120,100 80,180 160,300
-                    S300,460 240,620 S140,780 220,940
-                    S360,1080 280,1240 S180,1400 260,1560
-                    S380,1720 300,1900 L300,2000
-                    L420,2000 L420,1900
-                    C480,1720 460,1560 380,1400
-                    S320,1240 400,1080 S320,940 320,780
-                    S400,620 360,460 S240,300 240,180
-                    S200,60 30,0 Z
-                " fill="url(#rG1)" />
-                <!-- Дублируем для бесшовного цикла -->
-                <path d="
-                    M-20,1000 C120,1100 80,1180 160,1300
-                    S300,1460 240,1620 S140,1780 220,1940
-                    S360,2080 280,2240 S180,2400 260,2560
-                    S380,2720 300,2900 L300,3000
-                    L420,3000 L420,2900
-                    C480,2720 460,2560 380,2400
-                    S320,2240 400,2080 S320,1940 320,1780
-                    S400,1620 360,1460 S240,1300 240,1180
-                    S200,1060 30,1000 Z
-                " fill="url(#rG1)" />
-                <defs>
-                    <linearGradient id="rG1" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stop-color="#1a4a35" stop-opacity="0.15"/>
-                        <stop offset="40%" stop-color="#2a6a4a" stop-opacity="0.4"/>
-                        <stop offset="60%" stop-color="#2a6a4a" stop-opacity="0.4"/>
-                        <stop offset="100%" stop-color="#1a4a35" stop-opacity="0.15"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
+    <!-- Пейзаж: река + сосны + каякеры -->
+    <div class="landscape" id="landscape">
+        <svg viewBox="0 0 500 2200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="riverFill" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#1a3a4a" stop-opacity="0.15"/>
+                    <stop offset="30%" stop-color="#2a5570" stop-opacity="0.5"/>
+                    <stop offset="50%" stop-color="#3a6a85" stop-opacity="0.6"/>
+                    <stop offset="70%" stop-color="#2a5570" stop-opacity="0.5"/>
+                    <stop offset="100%" stop-color="#1a3a4a" stop-opacity="0.15"/>
+                </linearGradient>
+                <linearGradient id="riverShimmer" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#5a9ab5" stop-opacity="0"/>
+                    <stop offset="35%" stop-color="#7ab8d0" stop-opacity="0.12"/>
+                    <stop offset="50%" stop-color="#8ac5dd" stop-opacity="0.16"/>
+                    <stop offset="65%" stop-color="#7ab8d0" stop-opacity="0.12"/>
+                    <stop offset="100%" stop-color="#5a9ab5" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="riverGold" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
+                    <stop offset="50%" stop-color="#c9a84c" stop-opacity="0.05"/>
+                    <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+                </linearGradient>
 
-        <!-- Блики волн -->
-        <div class="river-shimmer">
-            <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="
-                    M60,0 C180,110 120,200 200,340
-                    S280,500 230,660 S170,810 240,960
-                    S340,1110 280,1270 S200,1430 270,1580
-                    S370,1740 310,1920 L310,2000
-                    L360,2000 L360,1920
-                    C400,1740 390,1580 340,1430
-                    S300,1270 360,1110 S300,960 300,810
-                    S370,660 340,500 S220,340 220,200
-                    S190,80 70,0 Z
-                " fill="url(#rG2)" />
-                <path d="
-                    M60,1000 C180,1110 120,1200 200,1340
-                    S280,1500 230,1660 S170,1810 240,1960
-                    S340,2110 280,2270 S200,2430 270,2580
-                    S370,2740 310,2920 L310,3000
-                    L360,3000 L360,2920
-                    C400,2740 390,2580 340,2430
-                    S300,2270 360,2110 S300,1960 300,1810
-                    S370,1660 340,1500 S220,1340 220,1200
-                    S190,1080 70,1000 Z
-                " fill="url(#rG2)" />
-                <defs>
-                    <linearGradient id="rG2" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stop-color="#4a9a6a" stop-opacity="0"/>
-                        <stop offset="30%" stop-color="#6abf8a" stop-opacity="0.25"/>
-                        <stop offset="50%" stop-color="#8ad4a0" stop-opacity="0.3"/>
-                        <stop offset="70%" stop-color="#6abf8a" stop-opacity="0.25"/>
-                        <stop offset="100%" stop-color="#4a9a6a" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
+                <!-- Сосна -->
+                <g id="pine">
+                    <line x1="0" y1="0" x2="0" y2="18" stroke="#4a7a4a" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M0,0c0,2.2-1.8,4-4,4" stroke="#5a9a6a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M0,4c0,3.3-2.7,6-6,6" stroke="#5a9a6a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M0,8c0,4.4-3.6,8-8,8" stroke="#5a9a6a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M0,0c0,2.2,1.8,4,4,4" stroke="#5a9a6a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M0,4c0,3.3,2.7,6,6,6" stroke="#5a9a6a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                    <path d="M0,8c0,4.4,3.6,8,8,8" stroke="#5a9a6a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                </g>
+                <g id="ps">
+                    <line x1="0" y1="0" x2="0" y2="13" stroke="#4a7a4a" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M0,0c0,1.7-1.4,3.2-3.2,3.2" stroke="#4d8a5a" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M0,3c0,2.5-2,4.6-4.6,4.6" stroke="#4d8a5a" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M0,6c0,3.3-2.7,6-6,6" stroke="#4d8a5a" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M0,0c0,1.7,1.4,3.2,3.2,3.2" stroke="#4d8a5a" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M0,3c0,2.5,2,4.6,4.6,4.6" stroke="#4d8a5a" stroke-width="1" fill="none" stroke-linecap="round"/>
+                    <path d="M0,6c0,3.3,2.7,6,6,6" stroke="#4d8a5a" stroke-width="1" fill="none" stroke-linecap="round"/>
+                </g>
 
-        <!-- Золотые блики-дорожки -->
-        <div class="river-sparkle">
-            <svg viewBox="0 0 1000 2000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="
-                    M100,0 C200,120 160,220 230,370
-                    S260,540 230,690 S190,840 250,990
-                    S330,1130 280,1290 S210,1450 270,1600
-                    S350,1760 300,1940 L300,2000
-                    L320,2000 L320,1940
-                    C360,1760 350,1600 310,1450
-                    S290,1290 340,1130 S290,990 280,840
-                    S340,690 310,540 S240,370 240,220
-                    S210,90 110,0 Z
-                " fill="url(#rG3)" />
-                <path d="
-                    M100,1000 C200,1120 160,1220 230,1370
-                    S260,1540 230,1690 S190,1840 250,1990
-                    S330,2130 280,2290 S210,2450 270,2600
-                    S350,2760 300,2940 L300,3000
-                    L320,3000 L320,2940
-                    C360,2760 350,2600 310,2450
-                    S290,2290 340,2130 S290,1990 280,1840
-                    S340,1690 310,1540 S240,1370 240,1220
-                    S210,1090 110,1000 Z
-                " fill="url(#rG3)" />
-                <defs>
-                    <linearGradient id="rG3" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/>
-                        <stop offset="40%" stop-color="#c9a84c" stop-opacity="0.06"/>
-                        <stop offset="60%" stop-color="#c9a84c" stop-opacity="0.06"/>
-                        <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
+                <!-- Каяк -->
+                <g id="kayak">
+                    <ellipse cx="0" cy="1" rx="5" ry="1.8" fill="#9B7A2A" opacity="0.85"/>
+                    <circle cx="0" cy="-1.5" r="1.3" fill="#d4b860" opacity="0.8"/>
+                    <line x1="0" y1="-0.2" x2="0" y2="1" stroke="#d4b860" stroke-width="0.7" opacity="0.7"/>
+                    <line x1="-4.5" y1="-0.5" x2="4.5" y2="0.8" stroke="#d4b860" stroke-width="0.5" opacity="0.6">
+                        <animateTransform attributeName="transform" type="rotate" values="-8,0,0;8,0,0;-8,0,0" dur="1.5s" repeatCount="indefinite"/>
+                    </line>
+                </g>
+
+                <!-- Центральная линия реки для каякеров -->
+                <path id="riverPath" d="
+                    M60,0 C90,50 180,80 230,150
+                    C300,240 380,260 350,380
+                    C320,500 160,500 130,600
+                    C100,700 80,740 130,830
+                    C200,940 380,920 390,1050
+                    C400,1180 220,1200 170,1300
+                    C120,1400 70,1440 120,1540
+                    C190,1660 380,1650 380,1780
+                    C380,1910 200,1920 150,2020
+                    C100,2120 90,2160 140,2250
+                " fill="none"/>
+            </defs>
+
+            <!-- Русло реки -->
+            <path d="
+                M10,0 C50,40 140,60 200,140
+                C280,240 400,250 380,380
+                C360,510 180,500 140,610
+                C100,720 60,760 100,850
+                C170,960 400,930 420,1060
+                C440,1190 240,1210 180,1310
+                C120,1410 50,1460 90,1560
+                C160,1680 400,1660 410,1790
+                C420,1920 220,1940 160,2040
+                C100,2140 70,2180 110,2270
+                L180,2270
+                C150,2180 170,2140 220,2040
+                C280,1940 470,1920 460,1790
+                C450,1660 210,1680 150,1560
+                C90,1460 160,1410 230,1310
+                C300,1210 490,1190 470,1060
+                C450,930 220,960 160,850
+                C110,760 150,720 200,610
+                C240,500 410,510 430,380
+                C450,250 340,240 260,140
+                C200,60 110,40 70,0 Z
+            " fill="url(#riverFill)" />
+
+            <!-- Блики -->
+            <path d="
+                M30,0 C65,45 155,70 210,145
+                C285,245 390,255 370,385
+                C350,515 185,505 145,615
+                C105,725 70,765 110,855
+                C175,965 395,935 415,1065
+                C435,1195 245,1215 185,1315
+                C125,1415 60,1465 100,1565
+                C170,1685 395,1665 405,1795
+                C415,1925 225,1945 165,2045
+                C105,2145 80,2185 115,2270
+                L155,2270
+                C130,2185 145,2145 200,2045
+                C260,1945 445,1925 435,1795
+                C425,1665 200,1685 135,1565
+                C75,1465 140,1415 210,1315
+                C280,1215 465,1195 445,1065
+                C425,935 200,965 140,855
+                C95,765 130,725 175,615
+                C215,505 385,515 405,385
+                C425,255 315,245 240,145
+                C175,70 95,45 60,0 Z
+            " fill="url(#riverShimmer)" opacity="0.5">
+                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+            </path>
+
+            <!-- Золотая дорожка -->
+            <path d="
+                M40,0 C70,48 160,75 215,148
+                C290,248 385,258 365,388
+                C345,518 190,508 150,618
+                C110,728 75,768 115,858
+                C180,968 390,938 410,1068
+                C430,1198 250,1218 190,1318
+                C130,1418 65,1468 105,1568
+                C175,1688 390,1668 400,1798
+                C410,1928 230,1948 170,2048
+                C110,2148 85,2188 120,2270
+                L140,2270
+                C110,2188 125,2148 185,2048
+                C245,1948 425,1928 415,1798
+                C405,1668 190,1688 120,1568
+                C80,1468 145,1418 215,1318
+                C285,1218 445,1198 425,1068
+                C405,938 195,968 130,858
+                C90,768 125,728 170,618
+                C210,508 360,518 380,388
+                C400,258 305,248 230,148
+                C175,75 90,48 55,0 Z
+            " fill="url(#riverGold)" opacity="0.35">
+                <animate attributeName="opacity" values="0.2;0.45;0.2" dur="6s" repeatCount="indefinite"/>
+            </path>
+
+            <!-- СОСНЫ вдоль левого берега -->
+            <use href="#pine" x="12" y="15" opacity="0.4"/>
+            <use href="#ps" x="25" y="50" opacity="0.3"/>
+            <use href="#pine" x="8" y="90" opacity="0.45"/>
+            <use href="#ps" x="30" y="125" opacity="0.3"/>
+            <use href="#pine" x="18" y="170" opacity="0.4"/>
+
+            <use href="#ps" x="55" y="280" opacity="0.3"/>
+            <use href="#pine" x="40" y="320" opacity="0.4"/>
+            <use href="#ps" x="60" y="370" opacity="0.35"/>
+
+            <use href="#pine" x="50" y="500" opacity="0.4"/>
+            <use href="#ps" x="35" y="540" opacity="0.3"/>
+            <use href="#pine" x="55" y="580" opacity="0.45"/>
+            <use href="#ps" x="40" y="630" opacity="0.3"/>
+            <use href="#pine" x="25" y="670" opacity="0.4"/>
+
+            <use href="#ps" x="30" y="760" opacity="0.3"/>
+            <use href="#pine" x="15" y="800" opacity="0.4"/>
+            <use href="#ps" x="40" y="840" opacity="0.35"/>
+
+            <use href="#pine" x="55" y="960" opacity="0.4"/>
+            <use href="#ps" x="38" y="1000" opacity="0.3"/>
+            <use href="#pine" x="50" y="1050" opacity="0.45"/>
+
+            <use href="#ps" x="40" y="1200" opacity="0.3"/>
+            <use href="#pine" x="25" y="1240" opacity="0.4"/>
+            <use href="#ps" x="50" y="1290" opacity="0.35"/>
+            <use href="#pine" x="30" y="1340" opacity="0.4"/>
+
+            <use href="#pine" x="20" y="1460" opacity="0.4"/>
+            <use href="#ps" x="45" y="1510" opacity="0.3"/>
+            <use href="#pine" x="30" y="1560" opacity="0.45"/>
+
+            <use href="#ps" x="55" y="1680" opacity="0.3"/>
+            <use href="#pine" x="40" y="1720" opacity="0.4"/>
+            <use href="#ps" x="25" y="1770" opacity="0.35"/>
+
+            <use href="#pine" x="45" y="1920" opacity="0.4"/>
+            <use href="#ps" x="30" y="1960" opacity="0.3"/>
+            <use href="#pine" x="50" y="2010" opacity="0.45"/>
+            <use href="#ps" x="20" y="2060" opacity="0.3"/>
+            <use href="#pine" x="40" y="2110" opacity="0.4"/>
+
+            <!-- СОСНЫ вдоль правого берега -->
+            <use href="#pine" x="460" y="130" opacity="0.4"/>
+            <use href="#ps" x="480" y="170" opacity="0.3"/>
+            <use href="#pine" x="465" y="220" opacity="0.45"/>
+            <use href="#ps" x="485" y="270" opacity="0.3"/>
+
+            <use href="#pine" x="475" y="370" opacity="0.4"/>
+            <use href="#ps" x="460" y="420" opacity="0.35"/>
+            <use href="#pine" x="480" y="470" opacity="0.4"/>
+
+            <use href="#ps" x="470" y="600" opacity="0.3"/>
+            <use href="#pine" x="485" y="650" opacity="0.4"/>
+            <use href="#ps" x="465" y="700" opacity="0.35"/>
+
+            <use href="#pine" x="475" y="830" opacity="0.4"/>
+            <use href="#ps" x="460" y="870" opacity="0.3"/>
+            <use href="#pine" x="480" y="920" opacity="0.45"/>
+            <use href="#ps" x="470" y="960" opacity="0.3"/>
+
+            <use href="#pine" x="485" y="1060" opacity="0.4"/>
+            <use href="#ps" x="465" y="1110" opacity="0.35"/>
+            <use href="#pine" x="480" y="1160" opacity="0.4"/>
+
+            <use href="#ps" x="470" y="1310" opacity="0.3"/>
+            <use href="#pine" x="485" y="1360" opacity="0.4"/>
+            <use href="#ps" x="460" y="1410" opacity="0.35"/>
+            <use href="#pine" x="475" y="1460" opacity="0.4"/>
+
+            <use href="#pine" x="465" y="1570" opacity="0.4"/>
+            <use href="#ps" x="480" y="1620" opacity="0.3"/>
+            <use href="#pine" x="460" y="1670" opacity="0.45"/>
+
+            <use href="#ps" x="475" y="1790" opacity="0.3"/>
+            <use href="#pine" x="485" y="1840" opacity="0.4"/>
+            <use href="#ps" x="465" y="1890" opacity="0.35"/>
+            <use href="#pine" x="480" y="1940" opacity="0.4"/>
+
+            <use href="#ps" x="470" y="2050" opacity="0.3"/>
+            <use href="#pine" x="460" y="2100" opacity="0.4"/>
+            <use href="#ps" x="480" y="2150" opacity="0.35"/>
+
+            <!-- КАЯКЕРЫ по центру русла -->
+            <g>
+                <animateMotion dur="24s" repeatCount="indefinite" rotate="auto">
+                    <mpath href="#riverPath"/>
+                </animateMotion>
+                <use href="#kayak"/>
+            </g>
+            <g>
+                <animateMotion dur="28s" repeatCount="indefinite" rotate="auto" begin="-9s">
+                    <mpath href="#riverPath"/>
+                </animateMotion>
+                <use href="#kayak"/>
+            </g>
+            <g>
+                <animateMotion dur="22s" repeatCount="indefinite" rotate="auto" begin="-17s">
+                    <mpath href="#riverPath"/>
+                </animateMotion>
+                <use href="#kayak"/>
+            </g>
+        </svg>
     </div>
+
+    <!-- Светлячки -->
+    <div class="fireflies" id="fireflies"></div>
 
     <div class="cards-wrapper">
 
-        <!-- Карточка 1: Фото + приветствие -->
         <div class="card">
             <div class="photo-frame">
                 <img src="wedding.jpg" alt="Наше фото">
             </div>
             <h1>Дорогие родные и близкие!</h1>
             <div class="divider">
-                <span class="line"></span>
-                <span>✦</span>
-                <span class="line"></span>
+                <span class="line"></span><span>✦</span><span class="line"></span>
             </div>
         </div>
 
-        <!-- Карточка 2: Текст + дата -->
         <div class="card">
-            <p>
-                В нашей жизни предстоят счастливые перемены. Мы хотим, чтобы в этот день рядом с нами были самые дорогие для нас люди.
-            </p>
-            <p>
-                Будем рады разделить с вами этот чудесный праздник в честь нашей любви и союза, который состоится
-            </p>
+            <p>В нашей жизни предстоят счастливые перемены. Мы хотим, чтобы в этот день рядом с нами были самые дорогие для нас люди.</p>
+            <p>Будем рады разделить с вами этот чудесный праздник в честь нашей любви и союза, который состоится</p>
             <span class="date-big">26 июля 2026</span>
         </div>
 
-        <!-- Карточка 3: Таймер -->
         <div class="card">
             <div class="timer-title">До торжества осталось</div>
             <div class="timer" id="timer">
@@ -440,50 +524,61 @@
             </div>
         </div>
 
-        <!-- Карточка 4: Место -->
         <div class="card">
             <p class="highlight">Приглашаем вас на семейный ужин</p>
             <div class="restaurant-name">Sattva</div>
             <p class="address">г. Москва, Ленинградский проспект, 52</p>
             <p>Ждем вас к <strong>16:00</strong><br>в хорошем настроении</p>
             <div class="divider">
-                <span class="line"></span>
-                <span>✦</span>
-                <span class="line"></span>
+                <span class="line"></span><span>✦</span><span class="line"></span>
             </div>
-            <div class="footer-note">
-                Поддержите нас вашими улыбками и красивыми нарядами
-            </div>
+            <div class="footer-note">Поддержите нас вашими улыбками и красивыми нарядами</div>
         </div>
 
     </div>
 
     <script>
+        // --- Таймер ---
         const weddingDate = new Date('2026-07-26T16:00:00+03:00').getTime();
 
         function updateTimer() {
-            const now = new Date().getTime();
+            const now = Date.now();
             const distance = weddingDate - now;
 
             if (distance < 0) {
                 document.getElementById('timer').innerHTML =
-                    '<div class="timer-title" style="font-size:1.8rem; margin-top:0.5rem;">Мы уже женаты! 🎉</div>';
+                    '<div class="timer-title" style="font-size:1.8rem;margin-top:0.5rem;">Мы уже женаты! 🎉</div>';
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const d = Math.floor(distance / 86400000);
+            const h = Math.floor((distance % 86400000) / 3600000);
+            const m = Math.floor((distance % 3600000) / 60000);
+            const s = Math.floor((distance % 60000) / 1000);
 
-            document.getElementById('days').innerText = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            document.getElementById('days').innerText = String(d).padStart(2,'0');
+            document.getElementById('hours').innerText = String(h).padStart(2,'0');
+            document.getElementById('minutes').innerText = String(m).padStart(2,'0');
+            document.getElementById('seconds').innerText = String(s).padStart(2,'0');
         }
 
         setInterval(updateTimer, 1000);
         updateTimer();
+
+        // --- Светлячки ---
+        const firefliesContainer = document.getElementById('fireflies');
+        for (let i = 0; i < 18; i++) {
+            const fly = document.createElement('div');
+            fly.className = 'firefly';
+            fly.style.left = (Math.random() * 100) + '%';
+            fly.style.top = (Math.random() * 100) + '%';
+            fly.style.animationDuration = (8 + Math.random() * 12) + 's, ' + (4 + Math.random() * 6) + 's';
+            fly.style.animationDelay = (-Math.random() * 15) + 's, ' + (-Math.random() * 8) + 's';
+            const size = 2 + Math.random() * 3;
+            fly.style.width = size + 'px';
+            fly.style.height = size + 'px';
+            firefliesContainer.appendChild(fly);
+        }
     </script>
 </body>
 </html>
