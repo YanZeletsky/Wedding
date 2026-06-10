@@ -41,7 +41,7 @@
       justify-content: center;
       text-align: center;
       padding: 3rem 1.5rem;
-      background-image: url('ВАША_ФОТОГРАФИЯ_В_ЛЕСУ.jpg'); /* ЗАМЕНИТЕ ЭТУ СТРОКУ */
+      background-image: url('wedding.jpg'); /* ЗАМЕНИТЕ ЭТУ СТРОКУ */
       background-size: cover;
       background-position: center 40%; /* Центрируем лица */
       background-repeat: no-repeat;
